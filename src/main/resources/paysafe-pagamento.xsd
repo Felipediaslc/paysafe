@@ -22,6 +22,62 @@
         </xsd:complexType>
     </xsd:element>
 
+    <xsd:element name="IniciarPagamentoRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="codigoLoja" type="xsd:string"/>
+                <xsd:element name="cliente" type="tns:cliente"/>
+                <xsd:element name="valorTotal" type="xsd:double"/>
+                <xsd:element name="urlCallback" type="xsd:string"/>
+                <xsd:element name="produtos">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="produto" type="tns:produto" maxOccurs="unbounded"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="IniciarPagamentoResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="autorizado" type="xsd:boolean"/>
+                <xsd:element name="codigoPagamento" type="xsd:string"/>
+                <xsd:element name="linkRedirecionamento" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="produto">
+        <xsd:sequence>
+            <xsd:element name="descricao" type="xsd:string"/>
+            <xsd:element name="quantidade" type="xsd:int"/>
+            <xsd:element name="valorUnitario" type="xsd:double"/>
+            <xsd:element name="valor" type="xsd:double"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="cliente">
+        <xsd:sequence>
+            <xsd:element name="nome" type="xsd:string"/>
+            <xsd:element name="cpf" type="xsd:string"/>
+            <xsd:element name="endereco" type="tns:endereco"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="endereco">
+        <xsd:sequence>
+            <xsd:element name="cep" type="xsd:string"/>
+            <xsd:element name="logradouro" type="xsd:string"/>
+            <xsd:element name="numero" type="xsd:string"/>
+            <xsd:element name="complemento" type="xsd:string"/>
+            <xsd:element name="cidade" type="xsd:string"/>
+            <xsd:element name="estado" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
     <xsd:simpleType name="tipoEstadoPagamento" final="restriction" >
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="AGUARDANDO_CHECKOUT" />

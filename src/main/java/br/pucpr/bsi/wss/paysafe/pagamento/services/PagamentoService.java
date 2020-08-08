@@ -12,7 +12,7 @@ import java.util.UUID;
 public class PagamentoService {
     private final String urlPagamentoBase;
 
-    public PagamentoService(@Value("paysafe.pagamento.urlBase") String urlPagamentoBase) {
+    public PagamentoService(@Value("${paysafe.pagamento.urlBase}") String urlPagamentoBase) {
         this.urlPagamentoBase = urlPagamentoBase;
     }
 
