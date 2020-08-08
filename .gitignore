@@ -1,3 +1,4 @@
+src/main/java/br/pucpr/bsi/wss/paysafe/pagamento/soap/schema
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
